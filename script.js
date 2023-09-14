@@ -1,8 +1,9 @@
 // Spotify API credentials
+// Spotify API credentials
 const clientId = 'e1118d05d2f74380b13083dc72908f0d'; // Replace with your actual client ID
 const clientSecret = '9ae608e72061470babe549f8c57715fd'; // Replace with your actual client secret
 
-// Load the Spotify Web Playback SDK script
+// Initialize the Spotify Web Playback SDK
 window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({
         name: 'My Web Player',
@@ -28,18 +29,18 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     player.connect().then(success => {
         if (success) {
             console.log('Connected to Spotify Web Playback SDK');
+
+            // Play Thunder by Imagine Dragons when the button is clicked
+            document.getElementById('playButton').addEventListener('click', () => {
+                player.togglePlay().then(() => {
+                    console.log('Toggled playback');
+                }).catch(error => {
+                    console.error('Error toggling playback', error);
+                });
+            });
         }
     }).catch(error => {
         console.error('Error connecting to Spotify Web Playback SDK', error);
-    });
-
-    // Play Thunder by Imagine Dragons when the button is clicked
-    document.getElementById('playButton').addEventListener('click', () => {
-        player.togglePlay().then(() => {
-            console.log('Toggled playback');
-        }).catch(error => {
-            console.error('Error toggling playback', error);
-        });
     });
 };
 
