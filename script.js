@@ -1,10 +1,9 @@
 // Spotify API credentials
-// Spotify API credentials
 const clientId = 'e1118d05d2f74380b13083dc72908f0d'; // Replace with your actual client ID
 const clientSecret = '9ae608e72061470babe549f8c57715fd'; // Replace with your actual client secret
 
-// Initialize the Spotify Web Playback SDK
-window.onSpotifyWebPlaybackSDKReady = () => {
+// Function to initialize the Spotify Web Playback SDK
+function initializePlayer() {
     const player = new Spotify.Player({
         name: 'My Web Player',
         getOAuthToken: callback => {
@@ -42,7 +41,7 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     }).catch(error => {
         console.error('Error connecting to Spotify Web Playback SDK', error);
     });
-};
+}
 
 // Load the Spotify Web Playback SDK script asynchronously
 (function() {
@@ -50,5 +49,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
     script.src = 'https://sdk.scdn.co/spotify-player.js';
     script.async = true;
     script.defer = true;
+    script.onload = initializePlayer; // Initialize player once the SDK script is loaded
     document.head.appendChild(script);
 })();
