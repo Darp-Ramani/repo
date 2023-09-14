@@ -1,6 +1,6 @@
 // Spotify API credentials
-const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
-const clientSecret = 'YOUR_CLIENT_SECRET'; // Replace with your actual client secret
+const clientId = 'e1118d05d2f74380b13083dc72908f0d'; // Replace with your actual client ID
+const clientSecret = '9ae608e72061470babe549f8c57715fd'; // Replace with your actual client secret
 
 // Create a Spotify Web Playback SDK instance
 const player = new Spotify.Player({
